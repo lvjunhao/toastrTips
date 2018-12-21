@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>tips</title>
+	<link rel="stylesheet" href="css/tips.css">
+	<script src='js/jquery.min.js'></script>
+	<script src="js/tips.js"></script>
+	<style>
+		body {
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn" >弹出</button>
+	<!-- 右下角消息提示框 -->
+	<div class="tips"></div>
+	<script>
+		$('.btn').on('click',function () {
+			$('.tips').initTips({
+				title: "标题",
+                message:"内容区域(可直接传递dom字符串用css去定做样式)",
+                duration:9999999, // 持续时间
+                space:8, // 通知窗之间上下间隔 单位px
+                limit:4
+				// type:'click', // 触发方式(内容区域)
+				// 事件触发后的回调函数
+                // action: function () {
+                //     console.log(1)
+                // }
+			});
+		})
+	</script>
+</body>
+</html>
