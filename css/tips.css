@@ -44,7 +44,7 @@
     min-width:220px;
     padding:5px 5px 15px 5px;
     transition: all .7s;
-    transform: translateX(110%);
+    font-size: 14px;
 }
 .ez_tips:hover {
     background-color: rgba(62, 165, 97, .8);
@@ -53,7 +53,7 @@
     opacity: 1;
 }
 .ez_tips.active {
-    transform: translateX(0);
+    transform: translateX(0)!important;
 }
 .ez_tips .title {
     padding-bottom:10px;

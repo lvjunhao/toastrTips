@@ -12,22 +12,44 @@
 		body {
 			background-color: skyblue;
 		}
+		.btn {
+			border:2px solid #ccc;
+			outline: none;
+			background-color: #1680e7;
+			padding: 5px 15px;
+			color: #fff;
+			font-size: 16px;
+			line-height: 1;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			touch-action: manipulation;
+			cursor: pointer;
+			user-select: none;
+			border-radius: 4px;
+		}
 	</style>
 </head>
 <body>
-	<button class="btn" >弹出</button>
+	<button class="btn" >click Me !</button>
 	<!-- 右下角消息提示框 -->
 	<div class="tips"></div>
 	<script>
 		$('.btn').on('click',function () {
+			// 以下属性 字符串类型的必须是string 但 Number类型的属性值传入string类型也可以
 			$('.tips').initTips({
-				title: "标题",
-                message:"内容区域(可直接传递dom字符串用css去定做样式)",
-                duration:9999999, // 持续时间
-                space:8, // 通知窗之间上下间隔 单位px
-                limit:4
+				// title: "", // head头部显示的标题内容
+                // message:"",// 内容区域 动态生成div时,将根据ajax获取的数据并拼接好的html字符串放到此处即可
+				duration:88000, // 提示框停留时间(毫秒为单位)  默认值为5000ms
+				space:10, // 通知窗之间上下间隔 单位px(默认值为8)
+				firstSpace:8, // 第一个提示框距离页面 上方或(下,左,右)的距离 (默认值为8)
+				margin:15, // 提示框 距离左右两边的距离 (默认值15px)
+				// width:300, // 提示框宽度,默认为auto不换行
+				// limit:4, // 限制提示框数量(默认值为4)
+				// timingFun:'linear',// 动画运动曲线(默认值为ease)
+				// direction:'right bottom', // 提示框滑出方向默认right bottom
 				// type:'click', // 触发方式(内容区域)
-				// 事件触发后的回调函数
+				// 上方type属性的事件触发后的回调函数
                 // action: function () {
                 //     console.log(1)
                 // }
