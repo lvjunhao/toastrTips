@@ -55,6 +55,7 @@
                         } else if (!$('.ez_tips').hasClass('length'+ (i+1))) {
                             $(newContainer).css(lastDirection,i * height + options.space * i + options.firstSpace + 'px');
                             $(newContainer).addClass('active length'+(i+1));
+                            break; // break一定要加,否则每次点击都会循环到结束,导致一个目标div可能同时有length1 length2.....等多个类名
                         }
                     }
                 } else {

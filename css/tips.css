@@ -33,7 +33,9 @@
 .ez_tips {
     position: fixed;
     min-height:50px;
-    background-color: rgba(68,153,221,.8);
+    /* background-color: rgba(68,153,221,.8); */
+    background: url('../imgs/tips-bg.png') no-repeat;
+    background-size: 100% 100%;
     box-shadow: 1px 1px 25px #c4e496;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -46,9 +48,9 @@
     transition: all .7s;
     font-size: 14px;
 }
-.ez_tips:hover {
+/* .ez_tips:hover {
     background-color: rgba(62, 165, 97, .8);
-}
+} */
 .ez_tips .title > i:last-child.active {
     opacity: 1;
 }
