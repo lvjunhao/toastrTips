@@ -1,4 +1,4 @@
-# toastrTips  一款基于jquery的插件（已经发布在jquery插件库下载需要3个JQ币，git转载请标注来源出处，顺手给个star，谢谢！）
+### toastrTips  一款基于jquery的插件（已经发布在jquery插件库下载需要3个JQ币，git转载请标注来源出处，顺手给个star，谢谢！）
 页面右下角通知框(类似win10通知框)
 在线demo演示:https://lvjunhao.github.io/toastrTips/
 基本的参数都在demo的index.html里的例子中注释了
