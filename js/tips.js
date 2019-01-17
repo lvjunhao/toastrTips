@@ -2,7 +2,7 @@
     $.fn.initTips = function (option) {
         var defaults = {
             title: "toastrTips",
-            message:"<p>未经允许不可转载本插件</p><p>联系作者:lvjunhao1314@sina.com</p>",
+            message:"<p>欢迎提出对此插件建议</p><p>联系作者:lvjunhao1314@sina.com</p>",
             duration:5000,
             space:8, 
             firstSpace:8,
@@ -11,11 +11,9 @@
             direction:'right bottom',
             timingFun:'ease',
             width:'auto',
-            ring:'block',
-            // type:'click',
-            // action: function () {
-            //     console.log(1)
-            // }
+            toastType:'info',
+            type:'click',
+            action: function () {},
         }
         var options = $.extend(defaults,option);
         var firstDirection = direction(options.direction)[0].trim().toString();
@@ -27,9 +25,10 @@
             minus = "";
         }
         if ($('.ez_tips').size() == 0 || $('.ez_tips').size() < options.limit) {
-            var container = "<div class='ez_tips' style="+firstDirection+":"+options.margin+"px;transform:translateX("+minus+"110%)></div>"
 
-            var head = "<div class='title clearfix'><i class='ez_icon ez_icon-volume-up fl' style='display:"+options.ring+"'></i><i class='ez_icon ez_icon-remove fr close'></i></div>";
+            var container = "<div class='ez_tips "+options.toastType+"' style="+firstDirection+":"+options.margin+"px;transform:translateX("+minus+"110%)></div>"
+
+            var head = "<div class='title clearfix'><i class='tips_icon_l fl'></i><i class='tips_icon_r close'></i></div>";
 
             var content = "<div class='tips-message'></div>"
             
@@ -40,6 +39,16 @@
             var newContainer = $(container).append(newHead,newContent);
 
             setTimeout(function () {
+                var timer;
+                function timeOut () {
+                    $(newContainer).removeClass('active');
+                    setTimeout(function () {
+                        $(newContainer).remove();
+                    }, 700)
+                };
+                timer = setTimeout(timeOut, options.duration);
+                var newTimes;
+                var times = Date.now();
                 $(newContainer).css({
                     'transition-timing-function':options.timingFun,
                     'width':options.width,
@@ -62,11 +71,16 @@
                     $(newContainer).css(lastDirection,options.firstSpace + 'px');
                     $(newContainer).addClass('active length1');
                 }
-                $(newContainer).on('mouseover',function () {
+                $(newContainer).on('mouseenter', function (event) {
+                    event.stopPropagation();
                     $(newHead).find('.close').addClass('active');
+                    clearTimeout(timer);
+                    newTimes = Date.now() - times;
                 });
-                $(newContainer).on('mouseleave',function () {
+                $(newContainer).on('mouseleave', function (event) {
+                    event.stopPropagation();
                     $(newHead).find('.close').removeClass('active');
+                    timer = setTimeout(timeOut, options.duration - newTimes);
                 });
                 $(newHead).find('.close').click(function () {
                     $(newContainer).removeClass('active');
@@ -78,13 +92,6 @@
                     $(newContent).css('cursor','pointer').on(options.type,options.action);
                 }
             },1);
-            
-            setTimeout(function () {
-                $(newContainer).removeClass('active');
-                setTimeout(function () {
-                    $(newContainer).remove();
-                },700)
-            },options.duration)
 
             $(this).append(newContainer);
         } else {
